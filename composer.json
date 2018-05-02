@@ -1,0 +1,13 @@
+{
+    "require": {
+       "noahbuscher/macaw": "dev-master",
+       "smarty/smarty-dev": "~3.1",
+       "illuminate/database": "~4.2"
+    },
+    "autoload": {
+      "classmap": [
+          "app/controllers",
+          "app/models"
+      ]
+  }
+}
