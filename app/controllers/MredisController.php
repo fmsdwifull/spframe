@@ -25,28 +25,32 @@ class MredisController extends BaseController
         echo $redis->get('cat'); // 111
         $redis->set('cat', 222);
         echo $redis->get('cat');
-        */
-        $redis->lpush('list', 'html');
-        $redis->lpush('list', 'css');
-        $redis->lpush('list', 'php');
+        
 
-        //获取列表中所有的值
-        $list = $redis->lrange('list', 0, -1);
-        print_r($list);echo '<br>'; 
+      //进队列
+      $redis->rpush('queue_name',json_encode(['user_id'=>5]));
+      $redis->rpush('queue_name',json_encode(['user_id'=>6]));
+      $redis->rpush('queue_name',json_encode(['user_id'=>7]));
+      //$res = $redis->lrange('queue_name',0,1000);
+      //print_r($res);
+      
+      //出队列
+      $x = $redis->rpop('queue_name');
+      print_r($x);
+     */
+     //监视count的值
+    $redis->watch('count');
+    $redis->multi();
+    $redis->set('count',time());
+    sleep(10);
 
-        //从右侧加入一个
-        $redis->rpush('list', 'mysql');
-        $list = $redis->lrange('list', 0, -1);
-        print_r($list);echo '<br>';
-
-        //从左侧弹出一个
-        $redis->lpop('list');
-        $list = $redis->lrange('list', 0, -1);
-         print_r($list);echo '<br>';
-
-    //从右侧弹出一个
-    $redis->rpop('list');
-    $list = $redis->lrange('list', 0, -1);
-    print_r($list);echo '<br>';
+    $res = $redis->exec();
+    //提交事务
+    if($res){
+        echo 'sucesss';
+        return;
+    }else{
+        echo 'fail';
+    }
   }
 }
