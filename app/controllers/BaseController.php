@@ -21,4 +21,10 @@ class BaseController
       //var_dump(get_class($this));
       return $this->view->display($v);	
   }
+  
+  public function assign($key, $value)
+  {
+      //var_dump(get_class($this));
+      return $this->view->assign($key, $value);	
+  }
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link href="/spfrmae/public/assert/css/style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="/spframe/public/assert/css/bootstrap.min.css">
+	<script type="text/javascript" src="/spframe/public/assert/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		
+		<table class="table table-hover">
+		   <thead>
+			  <tr>
+				 <th>姓名</th>
+				 <th>联系电话</th>
+				 <th>城市</th>
+				 <th>区县</th>
+				 <th>详细地址 </th>
+				 <th>提交页面 </th>
+				 <th>终端类型 </th>
+			  </tr>
+		   </thead>		
+			{foreach from=$xx3 item=foo}
+			<tr>
+				<td>{$foo.client_name}</td>	
+				<td>{$foo.client_mob}</td>
+				<td>{$foo.client_province}</td>	
+				<td>{$foo.client_city}</td>
+				<td>{$foo.client_addr}</td>		
+				<td>{$foo.client_page}</td>
+				<td>{$foo.client_from}</td>					
+			</tr>
+			{/foreach}
+		</table>
+	</div>
+</body>
+</html>
